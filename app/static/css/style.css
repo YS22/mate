@@ -74,11 +74,10 @@ width: 200px;
 }
 
 #login{margin:0 auto;
-	height: 500px;width:500px;
 	text-align:center; 
-	padding: 50px;
-	margin: 0,0,15px,0;
-	margin-top:100px;
+	/*padding: 50px;
+	margin: 0,0,15px,0;*/
+	margin-top:150px;
 } 
 #join{margin:0 auto;
 	height: 500px;width:500px;
@@ -111,6 +110,8 @@ width: 200px;
 #e-map div {    box-sizing: initial;}
 #l-map label {    max-width:none;}
 #l-map div {    box-sizing: initial;}
+
+
 #footer{
 	background-color:#666;
 	border-top:1px solid #ccc;
