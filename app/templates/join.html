@@ -1,0 +1,24 @@
+
+<!-- extend base layout -->
+ {% extends "base.html" %}
+ 
+
+{% block content %}
+<form class="form" method="POST">
+
+<div id="join" >
+<h3>加入组群</h3>
+{{ form.hidden_tag() }}        
+{{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
+{{ form.submit() }} 
+</form>
+<p>没组群？
+<a href="{{ url_for('group') }}">
+去创建
+</a>
+<h5>温馨提示：请先编辑个人信息再添加群组！</h5> 
+</p>
+{% include 'flash.html' %}
+</div>
+
+{% endblock %}

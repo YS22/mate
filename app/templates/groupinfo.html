@@ -1,0 +1,19 @@
+<!-- extend base layout -->
+ {% extends "base.html" %}
+ 
+
+{% block content %}
+<div id="groupinfo" >
+  <h4><i>我的群组({{group_lenth}})</i></h4>
+      <hr>
+       {% for group in group_list %}
+       <h5><i><span class="glyphicon glyphicon-home"></span>  {{group.groupname}}</i></h5>
+       <hr>
+      {% endfor %}
+
+</div>
+
+{% endblock %}
+
+
+
