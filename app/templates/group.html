@@ -12,11 +12,8 @@
 {{ form.submit() }} 
 </form>
 
-<p>有组群？
-<a href="{{ url_for('join') }}">
-去加入
-</a>
-</p>
+<p>有组群？<a href="{{ url_for('join') }}">加入</a></p>
+<p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p>
 {% include 'flash.html' %}
 </div>
 

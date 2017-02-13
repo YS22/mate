@@ -39,7 +39,7 @@ class EstablishForm(Form):
 
 class JoinForm(Form):
 	name=StringField(u'组群名称:',validators=[DataRequired()])
-	submit = SubmitField(u'加入')
+	submit = SubmitField(u'提交')
 
 class IndexForm(Form):
 	name=StringField(u'组群名称:',validators=[DataRequired()])

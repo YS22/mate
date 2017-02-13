@@ -1,4 +1,3 @@
-
 <!-- extend base layout -->
  {% extends "base.html" %}
  
@@ -7,13 +6,13 @@
 <form class="form" method="POST">
 
 <div id="join" >
-<h3>加入组群</h3>
+<h3>退出组群</h3>
 {{ form.hidden_tag() }}        
 {{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
 {{ form.submit() }} 
 </form>
 <p>没组群？<a href="{{ url_for('group') }}">创建</a></p>
-<p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p>
+<p> 有群组？<a href="{{ url_for('join') }}">加入</a></p> 
 
 {% include 'flash.html' %}
 </div>
