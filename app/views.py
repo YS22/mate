@@ -189,8 +189,10 @@ def group():
 @login_required
 def join():
     form = JoinForm()
+    print g.user.role
     if form.validate_on_submit():
         s = Group.query.filter_by(groupname=form.name.data).first()
+        user_role=g.user.role.all()
         if s is None:
             flash(u'此群未建立')
         else:
@@ -200,10 +202,14 @@ def join():
                     flash(u'你在该组群，不需重新加入！')
                     return redirect(url_for('join'))
             else:
-                g.user.group.append(s)
-                db.session.add(g.user)
-                db.session.commit()
-                flash(u'加入成功！')					
+                if user_role==[]:
+                    flash(u'请先编辑你的信息，在加入群组！')
+                    return redirect(url_for('join'))
+                else:
+                    g.user.group.append(s)
+                    db.session.add(g.user)
+                    db.session.commit()
+                    flash(u'加入成功！')					
             
     return render_template('join.html', form=form)
 
