@@ -110,7 +110,9 @@ width: 200px;
 #e-map div {    box-sizing: initial;}
 #l-map label {    max-width:none;}
 #l-map div {    box-sizing: initial;}
-
+#nc{
+	
+}
 
 #footer{
 	background-color:#666;
