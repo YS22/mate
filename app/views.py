@@ -217,8 +217,8 @@ def dele():
                     flash(u'操作无效，你不是该群成员！')
                     return redirect(url_for('dele'))
           else:
-            flash(u'请正确输入群名并进入！')
-            return redirect(url_for('delete')) 
+            flash(u'请正确输入群名！')
+            return redirect(url_for('dele')) 
       return render_template('delete.html',
                            title='Home',
                            form=form,
