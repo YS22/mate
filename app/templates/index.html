@@ -1,49 +1,39 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
-<body>
-<div class="container-fiuld">
+<div class="container" style="margin-left:-0px ">
   <div class="row">
-    <div class="col-md-10">
-      <div id="l-map"  ></div> 
+    <div class="col-md-10 " style="padding-top: 50px;">
+      <div id="l-map" ></div> 
     </div>
     <div class="col-md-2" style="padding-top:70px;">
-    <form class="form" method="POST">
-    <div style="margin-bottom:100px; ">
-    {{ form.hidden_tag() }}        
-   {{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
-   {{ form.submit() }}
-</form>
-{% include 'flash.html' %}
-    <hr>
-
-<th><h4><i>{{zu.groupname}}</i></h4></th>
-<th><p4><i>成员列表({{ren_lenth}})：</i></p4></th>
-
-{% for role in role_list %}
+      <div style="margin-bottom:100px; ">
+        <form class="form" method="POST">
+          {{ form.hidden_tag() }}        
+          {{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
+          {{ form.submit() }}
+        </form>
+        {% include 'flash.html' %}
+      <hr>
+      <th><h4><i>{{zu.groupname}}</i></h4></th>
+      <th><p4><i>成员列表({{ren_lenth}})：</i></p4></th>
+    {% for role in role_list %}
       <table>
-    <tr valign="top">
+      <tr valign="top">
         <td><img src="{{g.user.avatar(40)}}"></td>
         <td>
         <p4><i>姓名:{{role.name}}</i></p4><br>
         <p4><i>电话:{{role.tel}}</i></p4>
         </td>
-         
-    </tr>
-</table>
+      </tr>
+      </table>
      <br>
-    
-      {% endfor %}
-
-     
+    {% endfor %}
+      </div>
     </div>
     </div>
   </div>
-</div>
 
-</div>
-</div>
-</body>
 
 
  <script type="text/javascript">
@@ -51,8 +41,8 @@ var map = new BMap.Map("l-map");
 map.centerAndZoom("中国",5); 
 
 
-var bottom_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL});
-map.addControl(bottom_right_navigation);  
+var bottom_left_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_SMALL});
+map.addControl(bottom_left_navigation);  
 
 
 var localSearch = new BMap.LocalSearch(map);

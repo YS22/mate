@@ -151,21 +151,27 @@ def group():
     form = EstablishForm()
     if form.validate_on_submit():
         l = Group.query.filter_by(groupname=form.name.data).first()
+        user_role=g.user.role.all()
         if l is None:
-            group = Group(groupname=form.name.data)
-            db.session.add(group)
-            db.session.commit()
-            flash(u'创建成功，快加入该群吧！')
-            return redirect(url_for('join'))
+            if user_role==[]:
+                 flash(u'请编辑你的信息再创建群组！')
+                 return redirect(url_for('group'))
+            else:
+                group = Group(groupname=form.name.data)
+                db.session.add(group)
+                db.session.commit()
+                g.user.group.append(group)
+                db.session.add(g.user)
+                db.session.commit()
+                flash(u'创建成功,你已是该群成员！') 
         else:
-            flash(u'该名称已被占用！')  
+            flash(u'该名称已被占用！')
     return render_template('group.html', form=form)
 
 @app.route('/join', methods=['GET', 'POST'])
 @login_required
 def join():
     form = JoinForm()
-    print g.user.role
     if form.validate_on_submit():
         s = Group.query.filter_by(groupname=form.name.data).first()
         user_role=g.user.role.all()
