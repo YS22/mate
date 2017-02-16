@@ -2,44 +2,29 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fiuld " style="padding-top: 50px;">
+<div class="container-fiuld" style="padding-top: 50px;">
   <div class="row">
-    <div class="col-md-6" id="ditu"  >
+    <div class="col-md-6 container" id="ditu"  >
       <div id="e-map"  ></div> 
     </div>
-    <div class="col-md-6" style="padding-top:70px; margin-left: 50%;">
-   
+    <div class="col-md-6 container" style="padding-top:20px; margin-left:50%;">
     <form class="form" method="POST">
-
-<div id="edit" >
-<h2 style="color: #666;" id='log'><span class="glyphicon glyphicon-user"></span> 个人信息</h2>
-      现居地址：<br><input id="text_" type="text" value="　"><br>
-       <input type="button" value="查询" onclick="searchByStationName();"/><br>
-
-      {{ form.hidden_tag() }}
-      {{ form.position(id='result_')}}<br>
-      真实姓名：<br>{{form.name(id='nc')}}<br>
-      电话号码：<br>{{form.tel(id='nc')}}<br>
-     
-      {{ form.submit() }}
-      {% include 'flash.html' %}
+      <div id="edit" >
+        <h4 style="color: #666;" id='log'><span class="glyphicon glyphicon-user"></span> 个人信息</h4>
+        现居地址：<br><input id="text_" type="text" value="　"><br>
+        <input type="button" value="查询" onclick="searchByStationName();"/><br>
+        {{ form.hidden_tag() }}
+        {{ form.position(id='result_')}}<br>
+        真实姓名：<br>{{form.name(id='nc')}}<br>
+        电话号码：<br>{{form.tel(id='nc')}}<br>
+        {{ form.submit() }}
       </div>
       </form>
-    </div>
-    
-
-
-    
-  
+      {% include 'flash.html' %}
     </div>
   </div>
 </div>
-
-</div>
-</div>
-
-
-
+ 
  <script type="text/javascript">
 var map = new BMap.Map("e-map");
 map.centerAndZoom("中国",5); 
@@ -47,7 +32,6 @@ map.centerAndZoom("中国",5);
 
 var bottom_left_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_SMALL});
 map.addControl(bottom_left_navigation);  
-
 
 
 var localSearch = new BMap.LocalSearch(map);
