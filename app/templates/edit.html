@@ -2,13 +2,12 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
-<body>
-<div class="container-fiuld">
+<div class="container-fiuld " style="padding-top: 50px;">
   <div class="row">
-    <div class="col-md-6" >
+    <div class="col-md-6" id="ditu"  >
       <div id="e-map"  ></div> 
     </div>
-    <div class="col-md-6" style="padding-top:70px;">
+    <div class="col-md-6" style="padding-top:70px; margin-left: 50%;">
    
     <form class="form" method="POST">
 
@@ -38,7 +37,7 @@
 
 </div>
 </div>
-</body>
+
 
 
  <script type="text/javascript">
@@ -46,8 +45,9 @@ var map = new BMap.Map("e-map");
 map.centerAndZoom("中国",5); 
 
 
-var bottom_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL});
-map.addControl(bottom_right_navigation);  
+var bottom_left_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_SMALL});
+map.addControl(bottom_left_navigation);  
+
 
 
 var localSearch = new BMap.LocalSearch(map);
