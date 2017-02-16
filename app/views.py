@@ -1,11 +1,34 @@
 # -*- coding: utf-8 -*-
-from flask import render_template
-from app import app 
+from flask import render_template, flash, redirect, session, url_for, request, g
+from flask_login import login_user, logout_user, current_user, login_required
+from app import app, db, lm, oid,models
+from forms import LoginForm
+from models import User
+from forms import LoginForm,RegistrationForm,InfoForm,EstablishForm,JoinForm,IndexForm
+from models import User, Role,Group
+from datetime import datetime
+
+
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
+@oid.loginhandler
+def login(): 
+    if g.user is not None and g.user.is_authenticated():
+        return redirect(url_for('index'))
+    form = LoginForm() 
+    if form.validate_on_submit():
+        user = User.query.filter_by(nickname=form.nickname.data).first()
+        if user is not None and user.password==form.password.data:
+            login_user(user, form.remember_me.data)
+            return redirect(url_for('index'))  
+        flash(u'密码或用户名错误!')
+    return render_template('login.html', form=form)
+
+
 @app.route('/index', methods=['GET', 'POST'])
+@login_required
 def index():
-<<<<<<< HEAD
     role_list=[]
     ren_lenth=0
     form = IndexForm()
@@ -178,19 +201,34 @@ def groupinfo():
     group_lenth=len(group_list)                                                                                                          
     return render_template('groupinfo.html',group_list=group_list,group_lenth=group_lenth)
 	
-=======
-    return render_template('index.html')
->>>>>>> 91bface7d85f8915f756b53597fd0d0e1937f17a
+
+@app.route('/dele', methods=['GET', 'POST'])
+@login_required
+def dele():
+      form = JoinForm()
+      role_list=[]
+      zu = Group.query.filter_by(groupname=form.name.data).first()
+      if form.validate_on_submit():
+          if zu is not None:
+                 ren_list=zu.user.all()
+                 if g.user in ren_list:
+                    for rens in ren_list:
+                        role_list.append(rens.role[0])
+                    role_list.remove(g.user.role[0])
+                    g.user.group.remove(zu)
+                    db.session.add(g.user)
+                    db.session.commit()
+                    flash(u'你已从该群移出！')      
+                 else:
+                    flash(u'操作无效，你不是该群成员！')
+                    return redirect(url_for('dele'))
+          else:
+            flash(u'请正确输入群名！')
+            return redirect(url_for('dele')) 
+      return render_template('delete.html',
+                           title='Home',
+                           form=form,
+                           zu=zu)
 
 
-@app.route('/info', methods=['GET', 'POST'])
-def info():
-    return render_template('information.html')
 
-@app.route('/about', methods=['GET', 'POST'])
-def about():
-    return render_template('about.html')
-
-@app.route('/case', methods=['GET', 'POST'])
-def case():
-    return render_template('case.html')

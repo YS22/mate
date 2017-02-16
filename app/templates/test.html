@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link href="static/css/bootstrap.min.css" rel="stylesheet" >
+    <link  href="static/css/style.css" rel="stylesheet" >
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+  #l-map {width: 100%;height:570px;overflow: hidden;margin:0;font-family:"微软雅黑";}
+  #e-map {width: 100%;height:570px;overflow: hidden;margin:0;font-family:"微软雅黑";}
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DD279b2a90afdf0ae7a3796787a0742e "></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oldmates</title>
+    </head>
+    <body  data-spy="scroll" data-target="#myScrollspy">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="{{ url_for('index') }}" class="navbar-brand  logo"  > {{g.user.nickname}}
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse  " id="navbar-collapse">
+    {% if g.user.is_authenticated() %}
+      <ul class="nav navbar-nav navbar-right">
+      <li ><a href="{{ url_for('edit') }}" > <span class="glyphicon glyphicon-pencil"></span> 编辑信息 </a></li>
+		   <li ><a href="{{ url_for('index') }}" > <span class="glyphicon glyphicon-map-marker"></span> 好友位置 </a></li>
+		  <li ><a href="{{ url_for('join') }}" > <span class="glyphicon glyphicon-comment"></span> 加入群组 </a></li>
+      <li ><a href="{{ url_for('groupinfo') }}" > <span class="glyphicon glyphicon-book"></span> 我的群组 </a></li>
+        <li ><a href="{{ url_for('logout') }}" > <span class="glyphicon glyphicon-off"></span> 退出登录</a></li>
+        
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+{%block content %}{%endblock%}
+  <footer id="footer">
+  <div class="container">
+    <p>企业培训 | 合作事宜 | 版权投诉</p>
+    <p>邮箱：1774507011@qq.com | 2017.1.2</p>
+  </div>
+</footer>     
+</body>
+</html>

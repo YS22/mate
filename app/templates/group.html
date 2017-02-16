@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+ {% extends "base.html" %}
+ 
+
+{% block content %}
+<form class="form" method="POST">
+
+<div id="group" >
+<h3>创建组群</h3>
+{{ form.hidden_tag() }}        
+{{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
+{{ form.submit() }} 
+</form>
+
+<p>有组群？<a href="{{ url_for('join') }}">加入</a></p>
+<p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p>
+{% include 'flash.html' %}
+</div>
+
+{% endblock %}

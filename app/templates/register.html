@@ -1,0 +1,22 @@
+<!-- extend base layout -->
+ {% extends "base.html" %}
+
+{% block content %}
+<form class="form" method="POST">
+<div id='login'>
+<h2 style="color: #666;" id='log'><span class="glyphicon glyphicon-registration-mark"></span> 注册</h2>
+{{ form.hidden_tag() }}     
+{{ form.nickname.label }}<br>{{ form.nickname(id='nc') }} <br>    
+{{ form.password.label }}<br>{{ form.password(id='nc') }} <br>
+{{ form.password2.label }}<br>{{ form.password2(id='nc') }} <br>
+{{ form.submit() }} </form>
+
+<p>已注册？
+<a href="{{ url_for('login') }}">
+登录
+</a>
+</p>
+{% include 'flash.html' %}
+</div> 
+
+{% endblock %}

@@ -1,0 +1,72 @@
+
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+<body>
+<div class="container-fiuld">
+  <div class="row">
+    <div class="col-md-6" >
+      <div id="e-map"  ></div> 
+    </div>
+    <div class="col-md-6" style="padding-top:70px;">
+   
+    <form class="form" method="POST">
+
+<div id="edit" >
+<h2 style="color: #666;" id='log'><span class="glyphicon glyphicon-user"></span> 个人信息</h2>
+      现居地址：<br><input id="text_" type="text" value="　"><br>
+       <input type="button" value="查询" onclick="searchByStationName();"/><br>
+
+      {{ form.hidden_tag() }}
+      {{ form.position(id='result_')}}<br>
+      真实姓名：<br>{{form.name(id='nc')}}<br>
+      电话号码：<br>{{form.tel(id='nc')}}<br>
+     
+      {{ form.submit() }}
+      {% include 'flash.html' %}
+      </div>
+      </form>
+    </div>
+    
+
+
+    
+  
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</body>
+
+
+ <script type="text/javascript">
+var map = new BMap.Map("e-map");
+map.centerAndZoom("中国",5); 
+
+
+var bottom_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL});
+map.addControl(bottom_right_navigation);  
+
+
+var localSearch = new BMap.LocalSearch(map);
+localSearch.enableAutoViewport(); //允许自动调节窗体大小
+function searchByStationName() {
+    map.clearOverlays();//清空原来的标注
+    var keyword = document.getElementById("text_").value;
+    localSearch.setSearchCompleteCallback(function (searchResult) {
+        var poi = searchResult.getPoi(0);
+        document.getElementById("result_").value = poi.point.lng + "," + poi.point.lat;
+        map.centerAndZoom(poi.point, 13);
+        var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+        map.addOverlay(marker);
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    });
+    localSearch.search(keyword);
+}
+
+
+</script>
+
+{% endblock %}
