@@ -78,10 +78,11 @@ width: 200px;
 	margin-top:100px;
 } */
 #edit{
-	text-align:center; 	
+	text-align:center;
+	width: 200px;
+	height: 100%;
+	margin:0 auto;
 }
-
-
 
 #e-map label {    max-width:none;}
 #e-map div {    box-sizing: initial;}
@@ -100,6 +101,10 @@ width: 200px;
 	position:fixed;bottom:0px;left:0px;right: 0px;
 	
 
+}
+#index{
+	width: 200px;
+	height: 100%;
 }
 
 #groupinfo{

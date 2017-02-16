@@ -4,12 +4,12 @@
 {% block content %}
 <div class="container-fiuld" style="padding-top: 50px;">
   <div class="row">
-    <div class="col-md-6 " id="ditu2"  >
+    <div class="col-md-8 " id="ditu2"  >
       <div id="e-map"  ></div> 
     </div>
-    <div class="col-md-6 " style="padding-top:20px; margin-left:50%;">
+    <div class="col-md-4 " style="padding-top:20px; margin-left:70%;">
+     <div id="edit" >
     <form class="form" method="POST">
-      <div id="edit" >
         <h2 style="color: #666;"><span class="glyphicon glyphicon-user"></span> 个人信息</h2>
         现居地址：<br><input id="text_" type="text" value="　"><br>
         <input type="button" value="查询" onclick="searchByStationName();"/><br>
@@ -18,9 +18,10 @@
         真实姓名：<br>{{form.name()}}<br>
         电话号码：<br>{{form.tel()}}<br>
         {{ form.submit() }}
-      </div>
+      
       </form>
       {% include 'flash.html' %}
+      </div>
     </div>
   </div>
 </div>
