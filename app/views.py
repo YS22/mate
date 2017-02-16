@@ -114,20 +114,27 @@ def edit():
     form = InfoForm()
     if form.validate_on_submit():
         role = Role.query.filter_by(name=form.name.data).first()
-        if role is None:  
+        user_role=g.user.role.all()
+        if user_role==[]:
             roles= Role(position=form.position.data,name=form.name.data,tel=form.tel.data,author=g.user)
             db.session.add(roles)
             db.session.commit()
             flash(u'信息添加成功！')
         else:
-            if  g.user.role[0].name==role.name:
-                role.position=form.position.data
-                role.tel=form.tel.data
-                db.session.add(role)
-                db.session.commit()
-                flash(u'信息修改成功！')
+            if role is not None:
+                if  g.user.role[0].name==role.name:
+                    role.position=form.position.data
+                    role.tel=form.tel.data
+                    db.session.add(role)
+                    db.session.commit()
+                    flash(u'信息修改成功！')
+                    
+                else:
+                    flash(u'真实姓名不符，无法修改！') 
+
             else:
                 flash(u'真实姓名不符，无法修改！')
+
     role_list= models.Role.query.all()
     position_list=[]
     name_list=[]
