@@ -112,8 +112,8 @@ def register():
 @login_required
 def edit():
     form = InfoForm()
-    role = Role.query.filter_by(name=form.name.data).first()
     if form.validate_on_submit():
+        role = Role.query.filter_by(name=form.name.data).first()
         if role is None:  
             roles= Role(position=form.position.data,name=form.name.data,tel=form.tel.data,author=g.user)
             db.session.add(roles)
