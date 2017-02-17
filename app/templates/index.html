@@ -10,8 +10,9 @@
       <div id="index">
         <form class="form" method="POST">
           {{ form.hidden_tag() }}        
-          {{ form.name.label }}<br>{{ form.name() }}   <br> 
-          {{ form.submit() }}
+          <label class="form.label">组群名称</label><br><input  class="form-control"  type="text" name="name" value="" placeholder="请输入你的组群名称">   <br> 
+          <!-- {{ form.submit() }} -->
+          <button type="form.submit" class="btn btn-success" >进入群组</button>
         </form>
         {% include 'flash.html' %}
       <hr>

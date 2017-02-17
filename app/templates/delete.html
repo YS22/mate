@@ -4,13 +4,16 @@
 
 {% block content %}
 <form class="form" method="POST">
-
 <div id="login" >
 <h3>退出组群</h3>
-{{ form.hidden_tag() }}        
-{{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
-{{ form.submit() }} 
+<br>
+{{ form.hidden_tag() }}
+<label class="form">群组名称</label>
+ <br><input class="form-control"  id="text_" type="text" name="name" value="" placeholder="请输入要退出的群组名称">        
+ <br> 
+<button type="form.submit" class="btn btn-success" >退出</button> 
 </form>
+<br>
 <p>没组群？<a href="{{ url_for('group') }}">创建</a></p>
 <p> 有群组？<a href="{{ url_for('join') }}">加入</a></p> 
 

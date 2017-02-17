@@ -4,14 +4,16 @@
 
 {% block content %}
 <form class="form" method="POST">
-
 <div id="login" >
 <h3>创建组群</h3>
-{{ form.hidden_tag() }}        
-{{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
-{{ form.submit() }} 
+<br>
+{{ form.hidden_tag() }}
+<label class="form">群组名称</label>
+ <br><input class="form-control"  id="text_" type="text" name="name" value="" placeholder="请输入要创建的群组名称">        
+ <br> 
+<button type="form.submit" class="btn btn-success" >创建</button> 
 </form>
-
+<br>
 <p>有组群？<a href="{{ url_for('join') }}">加入</a></p>
 <p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p>
 {% include 'flash.html' %}

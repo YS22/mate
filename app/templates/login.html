@@ -3,18 +3,27 @@
  
 
 {% block content %}
-<form class="form" method="POST">
+<form class="form" role="form" method="POST">
 
 <div id="login" >
 	<h2 style="color: #666;" id='log'><span class="glyphicon glyphicon-user"></span> 登录</h2>
+<br>
+{{ form.hidden_tag() }}
 
-{{ form.hidden_tag() }}    
-{{ form.nickname.label }}<br>{{ form.nickname(id='nc') }} <br>    
-{{ form.password.label }}<br>{{ form.password(id='nc') }}   <br> 
-{{ form.submit() }} 
+	<label  class="form.label">用户名</label>
+<input  class="form-control"  type="text" name="nickname" value="" placeholder="请输入你的用户名">  
+<br>
+<!--  <div class="form-group text-center"> -->
+<label  class="form.label">密码</label>  
+<input  class="form-control"  type="text" name="password" value="" placeholder="请输入你的密码">
+<!-- </div> -->
+<br>
+<!-- {{ form.nickname.label }}<br>{{ form.nickname(id='nc') }} <br>  -->   
+<!-- {{ form.password.label }}<br>{{ form.password(id='nc') }}   <br>  -->
+ <button type="form.submit" class="btn btn-success" >登录</button>
 
 </form>
-
+<br>
 <p>新用户？
 <a href="{{ url_for('register') }}">
 请注册

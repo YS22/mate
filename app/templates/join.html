@@ -8,10 +8,14 @@
 
 <div id="login" >
 <h3>加入组群</h3>
-{{ form.hidden_tag() }}        
-{{ form.name.label }}<br>{{ form.name(id='nc') }}   <br> 
-{{ form.submit() }} 
+<br>
+{{ form.hidden_tag() }}
+ <label class="form">群组名称</label>
+ <br><input class="form-control"  id="text_" type="text" name="name" value="" placeholder="请输入要加入的群组名称">        
+ <br> 
+<button type="form.submit" class="btn btn-success" >加入</button> 
 </form>
+<br>
 <p>没组群？<a href="{{ url_for('group') }}">创建</a></p>
 <p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p>
 

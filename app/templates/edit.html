@@ -2,22 +2,34 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fiuld" style="padding-top: 50px;">
+<div class="container-fiuld">
   <div class="row">
-    <div class="col-md-8 " id="ditu2"  >
+    <div class="col-md-6 " id="ditu2"  >
       <div id="e-map"  ></div> 
     </div>
-    <div class="col-md-4 " style="padding-top:20px; margin-left:70%;">
-     <div id="edit" >
+    <div class="col-md-6 " style=" margin-left:50%;">
+     <div id="login" >
     <form class="form" method="POST">
         <h2 style="color: #666;"><span class="glyphicon glyphicon-user"></span> 个人信息</h2>
-        现居地址：<br><input id="text_" type="text" value="　"><br>
-        <input type="button" value="查询" onclick="searchByStationName();"/><br>
+        <br>
+        <label class="form">现居地址</label>
+        <br><input class="form-control"  id="text_" type="text" value="" placeholder="请输入你的地址">
+        <button type="button" class="btn btn-success" value="" onclick="searchByStationName();"/>查询</button><br>
+        <br>
         {{ form.hidden_tag() }}
-        {{ form.position(id='result_')}}<br>
-        真实姓名：<br>{{form.name()}}<br>
-        电话号码：<br>{{form.tel()}}<br>
-        {{ form.submit() }}
+        <input type="text" class="form-control" name="position" id="result_" placeholder="查询结果">
+        <br>
+         <label class="form">真实姓名</label>
+        <br><input class="form-control"  id="text_" type="text" name="name" value="" placeholder="请输入你的真实姓名">
+        <br>
+        <label class="form">电话号码</label>
+        <br><input class="form-control"  id="text_" type="text" name="tel" value="" placeholder="请输入你的电话号码">
+        <br>
+        <button type="form.submit" class="btn btn-success" >提交</button>
+       <!--  {{ form.position(id='result_')}}<br> -->
+        <!-- 真实姓名：<br>{{form.name()}}<br>
+        电话号码：<br>{{form.tel()}}<br> -->
+        <!-- {{ form.submit() }} -->
       
       </form>
       {% include 'flash.html' %}

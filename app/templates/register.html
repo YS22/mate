@@ -2,15 +2,22 @@
  {% extends "base.html" %}
 
 {% block content %}
-<form class="form" method="POST">
 <div id='login'>
+<form class="form" method="POST">
 <h2 style="color: #666;" id='log'><span class="glyphicon glyphicon-registration-mark"></span> 注册</h2>
+<br>
 {{ form.hidden_tag() }}     
-{{ form.nickname.label }}<br>{{ form.nickname(id='nc') }} <br>    
-{{ form.password.label }}<br>{{ form.password(id='nc') }} <br>
-{{ form.password2.label }}<br>{{ form.password2(id='nc') }} <br>
-{{ form.submit() }} </form>
-
+<label  class="form.label">用户名</label>
+<input  class="form-control"  type="text" name="nickname" value="" placeholder="请输入你的用户名">    
+<br>
+<label  class="form.label">密码</label>
+<input  class="form-control"  type="password" name="password" value="" placeholder="请输入你的密码"> 
+<br>
+<label  class="form.label">重复密码</label>
+<input  class="form-control"  type="password" name="password2" value="" placeholder="请重新输入你的密码"> 
+<br>
+<button type="form.submit" class="btn btn-success" >注册</button>
+</form>
 <p>已注册？
 <a href="{{ url_for('login') }}">
 登录
