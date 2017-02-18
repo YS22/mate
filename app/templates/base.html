@@ -25,7 +25,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oldmates</title>
 </head>
-<body  data-spy="scroll" data-target="#myScrollspy">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -43,22 +42,25 @@
        <li ><a href="{{ url_for('index') }}" > <span class="glyphicon glyphicon-map-marker"></span> 好友位置 </a></li>
       <li ><a href="{{ url_for('join') }}" > <span class="glyphicon glyphicon-comment"></span> 加入群组 </a></li>
       <li ><a href="{{ url_for('groupinfo') }}" > <span class="glyphicon glyphicon-book"></span> 我的群组 </a></li>
-        <li ><a href="{{ url_for('logout') }}" > <span class="glyphicon glyphicon-off"></span> 退出登录</a></li>
-        
+        <li ><a href="{{ url_for('logout') }}" > <span class="glyphicon glyphicon-off"></span> 退出登录</a></li>  
       </ul>
       {% endif %}
     </div>
   </div>
 </nav>
-
+<!-- nav end -->
+<body  data-spy="scroll" data-target="#myScrollspy">
+<div>
 {%block content %}
-{%endblock%}
-
-  <footer id="footer">
-  <div class="container">
+{%endblock%} 
+</div>
+</body>
+<!-- body end -->
+<!-- <footer id="footer">
+  <div class="container ">
     <p> 合作事宜 | 版权投诉 | 杨胜制作☃</p>
     <p><span class="glyphicon glyphicon-envelope"></span> :1774507011@qq.com | <span class="glyphicon glyphicon-calendar"></span> 2017.2.12 | <span class=" glyphicon glyphicon-earphone"></span>:17786493932</p>
   </div>
-</footer>     
-</body>
+</footer>  -->
+<!-- footer end -->
 </html>

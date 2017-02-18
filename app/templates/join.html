@@ -4,6 +4,7 @@
  
 
 {% block content %}
+<div class="container fiuld">
 <form class="form" method="POST">
 
 <div id="login" >
@@ -16,10 +17,16 @@
 <button type="form.submit" class="btn btn-success" >加入</button> 
 </form>
 <br>
-<p>没组群？<a href="{{ url_for('group') }}">创建</a></p>
-<p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p>
+<div>
+<!-- <a href="{{ url_for('group') }}" class="btn btn-success" role="button">创建</a>
+<a href="{{ url_for('dele') }}" class="btn btn-success" role="button">退群</a> -->	
+</div>
+ <p>没组群？<a href="{{ url_for('group') }}">创建</a></p> 
+ <p> 想退群？<a href="{{ url_for('dele') }}">退群</a></p> 
 
 {% include 'flash.html' %}
 </div>
+</div>
+
 
 {% endblock %}
