@@ -1,10 +1,10 @@
 from fabric.api import *
-env.hosts =['162.243.128.84']
+env.hosts =['47.93.103.136']
 env.user = 'root'
-env.password ='1234pttk'
+env.password ='1234pttK'
 
 def deploy ():
-	with cd('/srv/ysweb/mate'):
+	with cd('/srv/mate'):
 		run('git pull')
-		run('../bin/supervisorctl restart mate')
-		run('../bin/supervisorctl status')
+		run('supervisorctl restart mate')
+		run('/supervisorctl status')
